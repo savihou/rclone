@@ -176,7 +176,10 @@ var providerOption = fs.Option{
 	}, {
 		Value: "Qiniu",
 		Help:  "Qiniu Object Storage (Kodo)",
-	}, {
+    }, {
+        Value: "Zadara",
+        Help:  "Zadara Object Storage",
+    }, {
 		Value: "Other",
 		Help:  "Any other S3 compatible provider",
 	}},
@@ -3590,6 +3593,9 @@ func setQuirks(opt *Options) {
 		useAlreadyExists = false // untested
 	case "Wasabi":
 		useAlreadyExists = true // returns 200 OK
+        case "Zadara":
+                virtualHostStyle = false
+                useAlreadyExists = false // untested 
 	case "Leviia":
 		useAlreadyExists = false // untested
 	case "Qiniu":
